@@ -1,0 +1,150 @@
+---
+sidebar_position: 4
+---
+
+# Markdown 特性
+
+知识库 支持 **[Markdown](https://daringfireball.net/projects/markdown/syntax)** 和一些 **附加功能**。
+
+## 前言
+
+Markdown 文档的顶部有元数据，称为 [前言](https://jekyllrb.com/docs/front-matter/)：
+
+```text title="my-doc.md"
+// highlight-start
+---
+id: my-doc-id
+title: My document title
+description: My document description
+slug: /my-custom-url
+---
+// highlight-end
+
+## Markdown heading
+
+Markdown text with [links](./hello.md)
+```
+
+## 链接
+
+支持常规 Markdown 链接，使用 url 路径或相对文件路径。
+
+```md
+Let's see how to [Create a page](/create-a-page).
+```
+
+```md
+Let's see how to [Create a page](./create-a-page.md).
+```
+
+**效果:** Let's see how to [Create a page](./create-a-page.md).
+
+## 图片
+
+支持常规 Markdown 图像。
+
+您可以使用绝对路径来引用静态目录中的图像（`static/img/docusaurus.png`）：
+
+```md
+![Docusaurus logo](/img/docusaurus.png)
+```
+
+![Docusaurus logo](/img/docusaurus.png)
+
+您也可以参考与当前文件相关的图像。推荐将图像放置在靠近 Markdown 文件的位置：
+
+```md
+![Docusaurus logo](./img/docusaurus.png)
+```
+
+## 代码块
+
+Markdown 代码块支持语法高亮显示。
+
+    ```jsx title="src/components/HelloDocusaurus.js"
+    function HelloDocusaurus() {
+        return (
+            <h1>Hello, Docusaurus!</h1>
+        )
+    }
+    ```
+
+```jsx title="src/components/HelloDocusaurus.js"
+function HelloDocusaurus() {
+  return <h1>Hello, Docusaurus!</h1>;
+}
+```
+
+## 提示栏
+
+知识库有一种特殊的语法来创建警告和标注：
+
+    :::tip My tip
+
+    Use this awesome feature option
+
+    :::
+
+    :::danger Take care
+
+    This action is dangerous
+
+    :::
+
+:::tip My tip
+
+Use this awesome feature option
+
+:::
+
+:::danger Take care
+
+This action is dangerous
+
+:::
+
+## MDX 和 React 组件
+
+[MDX](https://mdxjs.com/) 可以使您的文档更具**交互性**，并允许在 Markdown 中使用任何 **React 组件**：
+
+```jsx
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`You clicked the color ${color} with label ${children}`)
+    }}>
+    {children}
+  </span>
+);
+
+这是 <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+
+这是 <Highlight color="#1877F2">Facebook blue</Highlight> !
+```
+
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`You clicked the color ${color} with label ${children}`);
+    }}>
+    {children}
+  </span>
+);
+
+这是 <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+
+这是 <Highlight color="#1877F2">Facebook blue</Highlight> !
